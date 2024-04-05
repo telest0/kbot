@@ -1,9 +1,10 @@
-module github.com/vit-um/kbot
+module github.com/telest0/kbot
 
 go 1.22.1
 
 require (
 	github.com/spf13/cobra v1.8.0
+	github.com/vit-um/kbot v1.5.0
 	gopkg.in/telebot.v3 v3.2.1
 )
 
