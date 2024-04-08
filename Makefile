@@ -1,11 +1,15 @@
+APP=$(shell basename $(shell git remote get-url origin))
+REGISTRY=telest0
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
-TARGETOS=linux
 
 format:
 	gofmt -s -w ./
 
-build: format
-	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${shell dpkg --print-architecture} go build -v -o kbot -ldflags "-X="github.com/vit-um/kbot/cmd.appVersion=${VERSION}
+image:
+	docker build -t ${REGISTRY}/${APP}:${VERSION}-linux .
+	
+push:
+	docker push ${REGISTRY}/${APP}:${VERSION}-linux
 
 lint:
 	golint
@@ -15,3 +19,12 @@ test:
 
 clean:
 	rm -rf kbot
+
+linux: 
+	docker buildx build -t ${REGISTRY}/${APP}:${VERSION}-lin --platform=linux/amd64,linux/arm64,linux/arm/v7 --push .
+
+macos:
+	docker buildx build -t ${REGISTRY}/${APP}:${VERSION}-mac --platform=darwin/arm64 --push .
+
+windows:
+	docker buildx build -t ${REGISTRY}/${APP}:${VERSION}-win --platform=windows/amd64 --push .
