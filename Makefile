@@ -21,10 +21,10 @@ clean:
 	rm -rf kbot
 
 linux: 
-	docker buildx build -t ${REGISTRY}/${APP}:${VERSION}-lin --platform=linux/amd64,linux/arm64,linux/arm/v7 --push .
+	docker buildx build -t ${REGISTRY}/${APP}:${VERSION} --platform=linux/amd64,linux/arm64,linux/arm/v7 --push --build-arg VERSION=${VERSION} .
 
 macos:
-	docker buildx build -t ${REGISTRY}/${APP}:${VERSION}-mac --platform=darwin/arm64 --push .
+	docker buildx build -t ${REGISTRY}/${APP}:${VERSION} --platform=darwin/arm64 --push --build-arg VERSION=${VERSION} .
 
 windows:
-	docker buildx build -t ${REGISTRY}/${APP}:${VERSION}-win --platform=windows/amd64 --push .
+	docker buildx build -t ${REGISTRY}/${APP}:${VERSION} --platform=windows/amd64 --push --build-arg VERSION=${VERSION} .
