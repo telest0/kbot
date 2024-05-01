@@ -1,15 +1,17 @@
 APP=$(shell basename $(shell git remote get-url origin) | cut -d '.' -f 1)
 REGISTRY=ghcr.io/telest0
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
+OS=linux
+ARCH=$(shell dpkg --print-architecture)
 
 format:
 	gofmt -s -w ./
 
 image:
-	docker build -t ${REGISTRY}/${APP}:${VERSION}-amd64 .
+	docker build --build-arg="TARGETOS=${OS}" --build-arg="TARGETARCH=${ARCH}" -t ${REGISTRY}/${APP}:${VERSION}-${OS}-${ARCH} .
 	
 push:
-	docker push ${REGISTRY}/${APP}:${VERSION}-amd64
+	docker push ${REGISTRY}/${APP}:${VERSION}-${OS}-${ARCH}
 
 lint:
 	golint
