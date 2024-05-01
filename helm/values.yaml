@@ -6,7 +6,7 @@ replicaCount: 1
 image:
   registry: ghcr.io
   repository: telest0
-  tag: v1.1.2-86bb37a
+  tag: v1.1.2-2390ed6
   arch: amd64
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
