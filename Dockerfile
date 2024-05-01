@@ -7,7 +7,7 @@ ARG VERSION
 WORKDIR /go/src/app
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="github.com/vit-um/kbot/cmd.appVersion=${VERSION}
+RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="github.com/telest0/kbot/cmd.appVersion=${VERSION}
 
 FROM scratch
 

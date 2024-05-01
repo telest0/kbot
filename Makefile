@@ -1,4 +1,4 @@
-APP=$(shell basename $(shell git remote get-url origin))
+APP=$(shell basename $(shell git remote get-url origin) | cut -d '.' -f 1)
 REGISTRY=telest0
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 
@@ -6,10 +6,10 @@ format:
 	gofmt -s -w ./
 
 image:
-	docker build -t ${REGISTRY}/${APP}:${VERSION}-linux .
+	docker build -t ${REGISTRY}/${APP}:${VERSION}-amd64 .
 	
-push:
-	docker push ${REGISTRY}/${APP}:${VERSION}-linux
+push: format image
+	docker push ${REGISTRY}/${APP}:${VERSION}-amd64
 
 lint:
 	golint
