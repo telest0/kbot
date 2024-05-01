@@ -8,7 +8,7 @@ format:
 image:
 	docker build -t ${REGISTRY}/${APP}:${VERSION}-amd64 .
 	
-push: format image
+push:
 	docker push ${REGISTRY}/${APP}:${VERSION}-amd64
 
 lint:
