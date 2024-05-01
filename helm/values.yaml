@@ -4,6 +4,7 @@
 
 replicaCount: 1
 image:
+  registry: ghcr.io
   repository: telest0
   tag: v1.1.2-5501e94
   arch: amd64
