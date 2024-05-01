@@ -5,7 +5,7 @@
 replicaCount: 1
 image:
   repository: telest0
-  tag: v1.1.0-9814000
+  tag: v1.1.2-5501e94
   arch: amd64
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
