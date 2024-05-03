@@ -38,11 +38,11 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           env:
-            - name: TELE_TOKEN
+            - name: {{ .Values.secret.env }}
               valueFrom:
                 secretKeyRef:
-                  key: key
-                  name: kbot
+                  key: {{ .Values.secret.key }}
+                  name: {{ .Values.secret.name }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
