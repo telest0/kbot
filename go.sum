@@ -359,9 +359,9 @@ github.com/stretchr/testify v1.7.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.7.5/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO+kdMU+MU=
 github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO+kdMU+MU=
 github.com/subosito/gotenv v1.4.1/go.mod h1:ayKnFf/c6rvx/2iiLrJUk1e6plDbT3edrFNGqEflhK0=
+github.com/telest0/kbot v1.1.2 h1:03GVgYZaCX4FY0QSVYLCMZLeEAboo+aI1zVIXfMrAf4=
+github.com/telest0/kbot v1.1.2/go.mod h1:3RIHLLkSQYmddedVxayxNmsR5jZqmDX7flmBds/bcmw=
 github.com/tv42/httpunix v0.0.0-20150427012821-b75d8614f926/go.mod h1:9ESjWnEqriFuLhtthL60Sar/7RFoluCcXsuvEwTV5KM=
-github.com/vit-um/kbot v1.5.0 h1:7wXrGJ9InwVUL6AEMaUq+p6pObr1gcS+WRrJQU73xf0=
-github.com/vit-um/kbot v1.5.0/go.mod h1:9fnC+bGPPBf/BO7q7k8qYC0nrUweJXfdp6Ejn31UoxQ=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.32/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
