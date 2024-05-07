@@ -6,7 +6,7 @@ replicaCount: 1
 image:
   registry: ghcr.io
   repository: telest0
-  tag: v1.1.2-1c4704d
+  tag: v1.2.1-839b8ff
   arch: amd64
   os: linux
   pullPolicy: IfNotPresent
