@@ -1,5 +1,5 @@
 APP=$(shell basename $(shell git remote get-url origin) | cut -d '.' -f 1)
-REGISTRY=telest0
+REGISTRY=ghcr.io/telest0
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 OS = linux
 ARCH = $(shell dpkg --print-architecture)
