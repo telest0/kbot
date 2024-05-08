@@ -13,13 +13,13 @@ lint:
 test:
 	go test -v
 
-build: 
+build:
 	CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH} go build -v -o kbot -ldflags "-X="github.com/telest0/kbot/cmd.appVersion=${VERSION}
 
-image: build
+image:
 	docker build --build-arg TARGETOS=${OS} --build-arg TARGETARCH=${ARCH} -t ${REGISTRY}/${APP}:${VERSION}-${OS}-${ARCH} .
 	
-push: image
+push:
 	docker push ${REGISTRY}/${APP}:${VERSION}-${OS}-${ARCH}
 
 clean:
