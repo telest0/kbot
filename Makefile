@@ -1,20 +1,20 @@
 APP=$(shell basename $(shell git remote get-url origin) | cut -d '.' -f 1)
-REGISTRY=ghcr.io/telest0
+REGISTRY=telest0
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
-OS=linux
-ARCH=$(shell dpkg --print-architecture)
+OS = linux
+ARCH = $(shell dpkg --print-architecture)
 
 format:
 	gofmt -s -w ./
 
 image:
-	docker build --build-arg="TARGETOS=${OS}" --build-arg="TARGETARCH=${ARCH}" -t ${REGISTRY}/${APP}:${VERSION}-${OS}-${ARCH} .
+	docker build --build-arg TARGETOS=${OS} --build-arg TARGETARCH=${ARCH} -t ${REGISTRY}/${APP}:${VERSION}-${OS}-${ARCH} .
 	
-push:
+push: image
 	docker push ${REGISTRY}/${APP}:${VERSION}-${OS}-${ARCH}
 
 lint:
-	golint
+	golint ./
 
 test:
 	go test -v
@@ -22,11 +22,8 @@ test:
 clean:
 	rm -rf kbot
 
-linux: 
-	docker buildx build -t ${REGISTRY}/${APP}:${VERSION} --platform=linux/amd64,linux/arm64,linux/arm/v7 --push --build-arg VERSION=${VERSION} .
+build: 
+	CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH} go build -v -o kbot -ldflags "-X="github.com/telest0/kbot/cmd.appVersion=${VERSION}
 
-macos:
-	docker buildx build -t ${REGISTRY}/${APP}:${VERSION} --platform=darwin/arm64 --push --build-arg VERSION=${VERSION} .
-
-windows:
-	docker buildx build -t ${REGISTRY}/${APP}:${VERSION} --platform=windows/amd64 --push --build-arg VERSION=${VERSION} .
+output:
+	echo "OS: ${OS}"

@@ -1,13 +1,12 @@
 FROM --platform=$BUILDPLATFORM golang:1.22.1 as builder
 
-ARG TARGETARCH
 ARG TARGETOS
-ARG VERSION
+ARG TARGETARCH
 
 WORKDIR /go/src/app
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="github.com/telest0/kbot/cmd.appVersion=${VERSION}
+RUN make build -e OS=$TARGETOS -e ARCH=$TARGETARCH
 
 FROM scratch
 
@@ -15,4 +14,4 @@ WORKDIR /
 COPY --from=builder /go/src/app/kbot .
 COPY --from=alpine:latest /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs
 
-ENTRYPOINT ["./kbot"]
+ENTRYPOINT ["./kbot", "start"]
