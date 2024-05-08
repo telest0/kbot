@@ -1,4 +1,4 @@
-module github.com/telets0/kbot
+module github.com/telest0/kbot
 
 go 1.22.1
 
