@@ -14,7 +14,7 @@ image:
 secret:
   name: kbot
   env: TELE_TOKEN
-  key: key
+  key: token
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
